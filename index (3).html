@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #007b5e;
+            margin-bottom: 30px;
+        }
+        .dish {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+            vertical-align: top;
+            transition: transform 0.2s;
+        }
+        .dish:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .dish img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .flag {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .slogan {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        #languageSelector {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            font-size: 1em;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <select id="languageSelector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+    </select>
+
+     "Welcome to Melia’s World of Taste"
+
+    <!-- Add your .dish elements here as in your original code -->
+
+    <input type="text" id="searchBox" placeholder="Search by country or dish...">
+
+    <p style="max-width: 600px; margin: 0 auto 20px; font-size: 1.1em;">
+        This interactive menu presents traditional dishes from various countries, tailored for global guests at our hotel. It combines culinary heritage with modern presentation, ideal for multicultural hospitality services.
+    </p>
+
+<footer style="margin-top: 40px; font-size: 0.9em; color: #777;">
+    by Karthik to Melia | Made with Love | Date 01/04/2025
+
+
+    <script>
+        const translations = {
+            en: {
+                title: "Our Melia Hotel Menu",
+                nationalDish: "National Dish",
+                belovedDish: "Beloved Dish",
+                searchPlaceholder: "Search by country or dish...",
+            },
+            es: {
+                title: "Nuestro Menú del Hotel Meliá",
+                nationalDish: "Plato Nacional",
+                belovedDish: "Plato Favorito",
+                searchPlaceholder: "Buscar por país o plato...",
+                footer: "Asignación por Tu Nombre | Universidad de Surrey | Fecha"
+            },
+            fr: {
+                title: "Notre Menu de l'Hôtel Melia",
+                nationalDish: "Plat National",
+                belovedDish: "Plat Préféré",
+                searchPlaceholder: "Rechercher par pays ou plat...",
+                footer: "Devoir par Votre Nom | Université de Surrey | Date"
+            }
+        };
+
+        const langSelect = document.getElementById("languageSelector");
+
+        langSelect.addEventListener("change", function () {
+            const lang = this.value;
+            const t = translations[lang];
+
+            document.querySelector("h1").textContent = t.title;
+            document.getElementById("searchBox").placeholder = t.searchPlaceholder;
+            document.querySelector("footer").textContent = t.footer;
+
+            document.querySelectorAll(".dish").forEach(dish => {
+                const paragraphs = dish.querySelectorAll("p");
+                if (paragraphs.length >= 2) {
+                    paragraphs[0].innerHTML = `<strong>${t.nationalDish}:</strong>` + paragraphs[0].innerHTML.split(":")[1];
+                    paragraphs[1].innerHTML = `<strong>${t.belovedDish}:</strong>` + paragraphs[1].innerHTML.split(":")[1];
+                }
+            });
+        });
+
+        document.getElementById("searchBox").addEventListener("keyup", function() {
+            const term = this.value.toLowerCase();
+            document.querySelectorAll(".dish").forEach(function(d) {
+                d.style.display = d.textContent.toLowerCase().includes(term) ? "inline-block" : "none";
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #007b5e;
+            margin-bottom: 30px;
+        }
+        .dish {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+            vertical-align: top;
+            transition: transform 0.2s;
+        }
+        .dish:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .dish img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .flag {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .slogan {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Melia Hotel Menu</h1>
+
+    <!-- Vietnam -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/vn.png" alt="Vietnam Flag">
+        <div class="slogan">"Independence, Freedom, Happiness"</div>
+        <img src="https://via.placeholder.com/300" alt="Pho">
+        <h2>Vietnam</h2>
+        <p><strong>National Dish:</strong> Pho</p>
+        <p><strong>Beloved Dish:</strong> Banh Mi</p>
+        <p>1. Pho<br>2. Banh Mi<br>3. Bun Cha<br>4. Goi Cuon<br>5. Cao Lau<br>6. Com Tam<br>7. Banh Xeo<br>8. Cha Ca<br>9. Hu Tieu<br>10. Che</p>
+    </div>
+
+    <!-- Indonesia -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/id.png" alt="Indonesia Flag">
+        <div class="slogan">"Bhinneka Tunggal Ika (Unity in Diversity)"</div>
+        <img src="https://via.placeholder.com/300" alt="Nasi Goreng">
+        <h2>Indonesia</h2>
+        <p><strong>National Dish:</strong> Nasi Goreng</p>
+        <p><strong>Beloved Dish:</strong> Satay</p>
+        <p>1. Nasi Goreng<br>2. Satay<br>3. Gado-Gado<br>4. Rendang<br>5. Soto<br>6. Bakso<br>7. Tempeh<br>8. Ayam Goreng<br>9. Mie Goreng<br>10. Martabak</p>
+    </div>
+
+    <!-- Thailand -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/th.png" alt="Thailand Flag">
+        <div class="slogan">"Nation, Religion, King"</div>
+        <img src="https://via.placeholder.com/300" alt="Pad Thai">
+        <h2>Thailand</h2>
+        <p><strong>National Dish:</strong> Pad Thai</p>
+        <p><strong>Beloved Dish:</strong> Tom Yum Goong</p>
+        <p>1. Pad Thai<br>2. Tom Yum Goong<br>3. Green Curry<br>4. Som Tum<br>5. Massaman Curry<br>6. Khao Pad<br>7. Thai Satay<br>8. Moo Ping<br>9. Larb<br>10. Mango Sticky Rice</p>
+    </div>
+
+    <!-- Sri Lanka -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/lk.png" alt="Sri Lanka Flag">
+        <div class="slogan">"One Country, One Nation"</div>
+        <img src="https://via.placeholder.com/300" alt="Rice and Curry">
+        <h2>Sri Lanka</h2>
+        <p><strong>National Dish:</strong> Rice and Curry</p>
+        <p><strong>Beloved Dish:</strong> Kottu Roti</p>
+        <p>1. Rice and Curry<br>2. Kottu Roti<br>3. Hoppers<br>4. String Hoppers<br>5. Pol Sambol<br>6. Parippu<br>7. Lamprais<br>8. Fish Ambul Thiyal<br>9. Pittu<br>10. Watalappam</p>
+    </div>
+
+    <!-- Singapore -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/sg.png" alt="Singapore Flag">
+        <div class="slogan">"Majulah Singapura (Onward Singapore)"</div>
+        <img src="https://via.placeholder.com/300" alt="Chilli Crab">
+        <h2>Singapore</h2>
+        <p><strong>National Dish:</strong> Chilli Crab</p>
+        <p><strong>Beloved Dish:</strong> Hainanese Chicken Rice</p>
+        <p>1. Chilli Crab<br>2. Hainanese Chicken Rice<br>3. Laksa<br>4. Satay<br>5. Char Kway Teow<br>6. Roti Prata<br>7. Nasi Lemak<br>8. Fish Head Curry<br>9. Kaya Toast<br>10. Carrot Cake</p>
+    </div>
+
+    
+
+    <!-- Philippines -->
+    <div class="dish">
+        <img class="flag" src="https://flagcdn.com/w320/ph.png" alt="Philippines Flag">
+        <div class="slogan">"For God, People, Nature, and Country"</div>
+        <img src="https://via.placeholder.com/300" alt="Adobo">
+        <h2>Philippines</h2>
+        <p><strong>National Dish:</strong> Adobo</p>
+        <p><strong>Beloved Dish:</strong> Sinigang</p>
+        <p>1. Adobo<br>2. Sinigang<br>3. Lechon<br>4. Kare-Kare<br>5. Pancit<br>6. Lumpia<br>7. Bicol Express<br>8. Sisig<br>9. Halo-Halo<br>10. Taho</p>
+    </div>
+    
+    <!-- Malaysia -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/my.png" alt="Malaysia Flag">
+    <div class="slogan">"Unity is Strength"</div>
+    <img src="https://via.placeholder.com/300" alt="Nasi Lemak">
+    <h2>Malaysia</h2>
+    <p><strong>National Dish:</strong> Nasi Lemak</p>
+    <p><strong>Beloved Dish:</strong> Roti Canai</p>
+    <p>1. Nasi Lemak<br>2. Roti Canai<br>3. Satay<br>4. Laksa<br>5. Char Kway Teow<br>6. Nasi Kandar<br>7. Hokkien Mee<br>8. Mee Goreng<br>9. Teh Tarik<br>10. Apam Balik</p>
+</div>
+
+<!-- Spain -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/es.png" alt="Spain Flag">
+    <div class="slogan">"Together we are stronger"</div>
+    <img src="https://via.placeholder.com/300" alt="Paella">
+    <h2>Spain</h2>
+    <p><strong>National Dish:</strong> Paella</p>
+    <p><strong>Beloved Dish:</strong> Tapas</p>
+    <p>1. Paella<br>2. Tapas<br>3. Tortilla Española<br>4. Churros<br>5. Gazpacho<br>6. Jamón Ibérico<br>7. Patatas Bravas<br>8. Croquetas<br>9. Pisto<br>10. Calamares</p>
+</div>
+
+<!-- Cuba -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/cu.png" alt="Cuba Flag">
+    <div class="slogan">"Patria o Muerte, Venceremos"</div>
+    <img src="https://via.placeholder.com/300" alt="Ropa Vieja">
+    <h2>Cuba</h2>
+    <p><strong>National Dish:</strong> Ropa Vieja</p>
+    <p><strong>Beloved Dish:</strong> Moros y Cristianos</p>
+    <p>1. Ropa Vieja<br>2. Moros y Cristianos<br>3. Tostones<br>4. Yuca con Mojo<br>5. Lechón Asado<br>6. Picadillo<br>7. Tamales<br>8. Arroz con Pollo<br>9. Cuban Sandwich<br>10. Flan</p>
+</div>
+
+
+
+<!-- Germany -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/de.png" alt="Germany Flag">
+    <div class="slogan">"Einigkeit und Recht und Freiheit" (Unity and Justice and Freedom)</div>
+    <img src="https://via.placeholder.com/300" alt="Sauerbraten">
+    <h2>Germany</h2>
+    <p><strong>National Dish:</strong> Sauerbraten</p>
+    <p><strong>Beloved Dish:</strong> Bratwurst</p>
+    <p>1. Sauerbraten<br>2. Bratwurst<br>3. Schweinshaxe<br>4. Kartoffelsalat<br>5. Pretzels<br>6. Currywurst<br>7. Spätzle<br>8. Rinderroulade<br>9. Rotkohl<br>10. Black Forest Cake</p>
+</div>
+
+<!-- Croatia -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/hr.png" alt="Croatia Flag">
+    <div class="slogan">"Lijepa naša domovino" (Our Beautiful Homeland)</div>
+    <img src="https://via.placeholder.com/300" alt="Peka">
+    <h2>Croatia</h2>
+    <p><strong>National Dish:</strong> Peka</p>
+    <p><strong>Beloved Dish:</strong> Čevapi</p>
+    <p>1. Peka<br>2. Čevapi<br>3. Crni Rižot (Black Risotto)<br>4. Pašticada<br>5. Zagorski Štrukli<br>6. Brudet<br>7. Sarma<br>8. Fuži with Truffles<br>9. Fritule<br>10. Rakija</p>
+</div>
+
+<!-- Brazil -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/br.png" alt="Brazil Flag">
+    <div class="slogan">"Ordem e Progresso" (Order and Progress)</div>
+    <img src="https://via.placeholder.com/300" alt="Feijoada">
+    <h2>Brazil</h2>
+    <p><strong>National Dish:</strong> Feijoada</p>
+    <p><strong>Beloved Dish:</strong> Churrasco</p>
+    <p>1. Feijoada<br>2. Churrasco<br>3. Coxinhas<br>4. Moqueca<br>5. Pão de Queijo<br>6. Brigadeiro<br>7. Acarajé<br>8. Vatapá<br>9. Farofa<br>10. Caipirinha</p>
+</div>
+
+
+     <!-- Portugal -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/pt.png" alt="Portugal Flag">
+    <div class="slogan">"Heróis do mar, nobre povo" (Heroes of the sea, noble people)</div>
+    <img src="https://via.placeholder.com/300" alt="Bacalhau à Brás">
+    <h2>Portugal</h2>
+    <p><strong>National Dish:</strong> Bacalhau à Brás</p>
+    <p><strong>Beloved Dish:</strong> Pastel de Nata</p>
+    <p>1. Bacalhau à Brás<br>2. Pastel de Nata<br>3. Francesinha<br>4. Caldo Verde<br>5. Arroz de Pato<br>6. Polvo à Lagareiro<br>7. Sardinhas Assadas<br>8. Cozido à Portuguesa<br>9. Carne de Porco à Alentejana<br>10. Bifana</p>
+</div>
+
+<!-- Dominican Republic -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/do.png" alt="Dominican Republic Flag">
+    <div class="slogan">"Dios, Patria, Libertad" (God, Homeland, Liberty)</div>
+    <img src="https://via.placeholder.com/300" alt="La Bandera">
+    <h2>Dominican Republic</h2>
+    <p><strong>National Dish:</strong> La Bandera</p>
+    <p><strong>Beloved Dish:</strong> Mangú</p>
+    <p>1. La Bandera<br>2. Mangú<br>3. Sancocho<br>4. Tostones<br>5. Habichuelas con Dulce<br>6. Pica Pollo<br>7. Chicharrón<br>8. Asopao<br>9. Morir Soñando<br>10. Pastelitos</p>
+</div>
+
+<!-- United Kingdom -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/gb.png" alt="United Kingdom Flag">
+    <div class="slogan">"God Save the King"</div>
+    <img src="https://via.placeholder.com/300" alt="Fish and Chips">
+    <h2>United Kingdom</h2>
+    <p><strong>National Dish:</strong> Fish and Chips</p>
+    <p><strong>Beloved Dish:</strong> Sunday Roast</p>
+    <p>1. Fish and Chips<br>2. Sunday Roast<br>3. Bangers and Mash<br>4. Shepherd's Pie<br>5. Full English Breakfast<br>6. Steak and Ale Pie<br>7. Scotch Egg<br>8. Cornish Pasty<br>9. Sticky Toffee Pudding<br>10. Chicken Tikka Masala</p>
+</div>
+
+<!-- France -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/fr.png" alt="France Flag">
+    <div class="slogan">"Liberté, Égalité, Fraternité"</div>
+    <img src="https://via.placeholder.com/300" alt="Coq au Vin">
+    <h2>France</h2>
+    <p><strong>National Dish:</strong> Coq au Vin</p>
+    <p><strong>Beloved Dish:</strong> Ratatouille</p>
+    <p>1. Coq au Vin<br>2. Ratatouille<br>3. Bouillabaisse<br>4. Cassoulet<br>5. Croissants<br>6. Crêpes<br>7. Quiche Lorraine<br>8. Escargots<br>9. Beef Bourguignon<br>10. Crème Brûlée</p>
+</div>
+
+
+
+<!-- Greece -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/gr.png" alt="Greece Flag">
+    <div class="slogan">"Ελευθερία ή Θάνατος" (Freedom or Death)</div>
+    <img src="https://via.placeholder.com/300" alt="Moussaka">
+    <h2>Greece</h2>
+    <p><strong>National Dish:</strong> Moussaka</p>
+    <p><strong>Beloved Dish:</strong> Gyro</p>
+    <p>1. Moussaka<br>2. Gyro<br>3. Souvlaki<br>4. Spanakopita<br>5. Dolmades<br>6. Tzatziki<br>7. Baklava<br>8. Greek Salad<br>9. Pastitsio<br>10. Loukoumades</p>
+</div>
+
+<!-- Austria -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/at.png" alt="Austria Flag">
+    <div class="slogan">"Land der Berge, Land am Strome" (Land of Mountains, Land by the River)</div>
+    <img src="https://via.placeholder.com/300" alt="Wiener Schnitzel">
+    <h2>Austria</h2>
+    <p><strong>National Dish:</strong> Wiener Schnitzel</p>
+    <p><strong>Beloved Dish:</strong> Sachertorte</p>
+    <p>1. Wiener Schnitzel<br>2. Sachertorte<br>3. Apfelstrudel<br>4. Tafelspitz<br>5. Kaiserschmarrn<br>6. Gulasch<br>7. Knödel<br>8. Brettljause<br>9. Salzburger Nockerl<br>10. Würstel</p>
+</div>
+
+<!-- Colombia -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/co.png" alt="Colombia Flag">
+    <div class="slogan">"Libertad y Orden" (Freedom and Order)</div>
+    <img src="https://via.placeholder.com/300" alt="Bandeja Paisa">
+    <h2>Colombia</h2>
+    <p><strong>National Dish:</strong> Bandeja Paisa</p>
+    <p><strong>Beloved Dish:</strong> Arepas</p>
+    <p>1. Bandeja Paisa<br>2. Arepas<br>3. Empanadas<br>4. Sancocho<br>5. Ajiaco<br>6. Tamales<br>7. Lechona<br>8. Patacones<br>9. Arroz con Coco<br>10. Buñuelos</p>
+</div>
+
+<!-- Jamaica -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/jm.png" alt="Jamaica Flag">
+    <div class="slogan">"Out of Many, One People"</div>
+    <img src="https://via.placeholder.com/300" alt="Ackee and Saltfish">
+    <h2>Jamaica</h2>
+    <p><strong>National Dish:</strong> Ackee and Saltfish</p>
+    <p><strong>Beloved Dish:</strong> Jerk Chicken</p>
+    <p>1. Ackee and Saltfish<br>2. Jerk Chicken<br>3. Curry Goat<br>4. Patties<br>5. Callaloo<br>6. Festival<br>7. Rice and Peas<br>8. Bammy<br>9. Escovitch Fish<br>10. Rum Cake</p>
+</div>
+
+<!-- United States -->
+<div class="dish">
+    <img class="flag" src="https://flagcdn.com/w320/us.png" alt="United States Flag">
+    <div class="slogan">"In God We Trust"</div>
+    <img src="https://via.placeholder.com/300" alt="Hamburger">
+    <h2>United States</h2>
+    <p><strong>National Dish:</strong> Hamburger</p>
+    <p><strong>Beloved Dish:</strong> Apple Pie</p>
+    <p>1. Hamburger<br>2. Apple Pie<br>3. Barbecue Ribs<br>4. Fried Chicken<br>5. Hot Dogs<br>6. Pizza<br>7. Mac and Cheese<br>8. Buffalo Wings<br>9. Chili<br>10. Clam Chowder</p>
+</div>
+
+
+
+    <input type="text" id="searchBox" placeholder="Search by country or dish...">
+    <script>
+    document.getElementById("searchBox").addEventListener("keyup", function() {
+        const term = this.value.toLowerCase();
+        document.querySelectorAll(".dish").forEach(function(d) {
+            d.style.display = d.textContent.toLowerCase().includes(term) ? "inline-block" : "none";
+        });
+    });
+    </script>
+
+    <p style="max-width: 600px; margin: 0 auto 20px; font-size: 1.1em;">
+        This interactive menu presents traditional dishes from various countries, tailored for global guests at our hotel. It combines culinary heritage with modern presentation, ideal for multicultural hospitality services.
+    </p>
+
+    <footer style="margin-top: 40px; font-size: 0.9em; color: #777;">
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            margin: 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            margin: 0 10px;
+            color: #007b5e;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        h1 {
+            color: #007b5e;
+            margin: 30px 0 20px;
+        }
+        .dish {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+            vertical-align: top;
+            transition: transform 0.2s;
+        }
+        .dish:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .dish img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .flag {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .slogan {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        #languageSelector {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            font-size: 1em;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .dish {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <select id="languageSelector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+    </select>
+
+    
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We offer authentic dishes from all around the world, served with love and hospitality inspired by the Melia standard of excellence.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: 0000000.com | WhatsApp: +44 00000000000</p>
+    </section>
+
+    <footer>
+        &copy; 2025 Melia Hotel | Created by Karthik | <a href="#contact">Contact</a> | <a href="#">Privacy</a>
+    </footer>
+
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; border-radius: 50px; border: none; background: #007b5e; color: white; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        ↑ Top
+    </button>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Welcome to Our Melia Menu",
+                nationalDish: "National Dish",
+                belovedDish: "Beloved Dish",
+                searchPlaceholder: "Search by country or dish...",
+                footer: "© 2025 Melia Hotel | Created by Karthik | Contact | Privacy"
+            },
+            es: {
+                title: "Bienvenido a nuestro menú de Meliá",
+                nationalDish: "Plato Nacional",
+                belovedDish: "Plato Favorito",
+                searchPlaceholder: "Buscar por país o plato...",
+                footer: "© 2025 Hotel Melia | Creado por Karthik | Contacto | Privacidad"
+            },
+            fr: {
+                title: "Bienvenue dans notre menu Melia",
+                nationalDish: "Plat National",
+                belovedDish: "Plat Préféré",
+                searchPlaceholder: "Rechercher par pays ou plat...",
+                footer: "© 2025 Hôtel Melia | Créé par Karthik | Contact | Confidentialité"
+            }
+        };
+
+        const langSelect = document.getElementById("languageSelector");
+
+        langSelect.addEventListener("change", function () {
+            const lang = this.value;
+            const t = translations[lang];
+
+            document.querySelector("h1").textContent = t.title;
+            document.getElementById("searchBox").placeholder = t.searchPlaceholder;
+            document.querySelector("footer").innerHTML = t.footer;
+
+            document.querySelectorAll(".dish").forEach(dish => {
+                const paragraphs = dish.querySelectorAll("p");
+                if (paragraphs.length >= 2) {
+                    paragraphs[0].innerHTML = `<strong>${t.nationalDish}:</strong>` + paragraphs[0].innerHTML.split(":")[1];
+                    paragraphs[1].innerHTML = `<strong>${t.belovedDish}:</strong>` + paragraphs[1].innerHTML.split(":")[1];
+                }
+            });
+        });
+
+        document.getElementById("searchBox").addEventListener("keyup", function() {
+            const term = this.value.toLowerCase();
+            document.querySelectorAll(".dish").forEach(function(d) {
+                d.style.display = d.textContent.toLowerCase().includes(term) ? "inline-block" : "none";
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+<footer style="margin-top: 40px; font-size: 0.9em; color: #777;">
+        by Karthik to Melia | Made with Love | Date 01/04/2025
